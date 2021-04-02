@@ -1,26 +1,35 @@
 #!groovy
+// truc et astuces dans un pipeline jenkins
 
 //scripted Pipeline
 node ('agent name') {
 
-
+  //----------------------------------------
   stage ('stage 1') {
-  
-    // code
+
+    // méthode pour empecher le build de s'arreter sur un fail
+    try {
+      sh (                        
+          script: ("exit 1")                    
+      )
+    } catch (err) {
+      //code
+    }
     
     // modifcation du résultat du stage :
     currentBuild.currentResult = 'FAILURE' // valeure possible : SUCCESS (couleur verte), UNSTABLE (couleur jaune), FAILURE (couleur rouge)
   
   }
+  //----------------------------------------
 
-  stage ('stage 1') {
+  //----------------------------------------
+  stage ('stage 2') {
 
     // code
 
     // modification du résultat du build :
     currentBuild.result = 'FAILURE' // valeure possible : SUCCESS (couleur verte), UNSTABLE (couleur jaune), FAILURE (couleur rouge)
-
   }
-
+  //----------------------------------------
 
 }
