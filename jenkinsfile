@@ -1,0 +1,26 @@
+#!groovy
+
+//scripted Pipeline
+node ('agent name') {
+
+
+  stage ('stage 1') {
+  
+    // code
+    
+    // modifcation du résultat du stage :
+    currentBuild.currentResult = 'FAILURE' // valeure possible : SUCCESS (couleur verte), UNSTABLE (couleur jaune), FAILURE (couleur rouge)
+  
+  }
+
+  stage ('stage 1') {
+
+    // code
+
+    // modification du résultat du build :
+    currentBuild.result = 'FAILURE' // valeure possible : SUCCESS (couleur verte), UNSTABLE (couleur jaune), FAILURE (couleur rouge)
+
+  }
+
+
+}
